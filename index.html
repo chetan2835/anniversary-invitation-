@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitation</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- GSAP for Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Audio Player -->
+    <div class="audio-control">
+        <button id="play-btn">Tap to Open Invitation <span style="font-size: 1.2em;">♫</span></button>
+        <audio id="wedding-music" loop>
+            <!-- Placeholder for user music -->
+            <source src="/wedding-party-happy-anniversary-celebration-background-music-374849.mp3" type="audio/mp3">
+        </audio>
+    </div>
+
+    <!-- Main Container -->
+    <div class="cinematic-container">
+
+        <!-- Scene 1: Temple Container -->
+        <div id="scene-temple" class="scene">
+            <div class="gate-container">
+                <div class="gate gate-left">
+                    <img src="temple_gate.png" alt="Gate Left">
+                </div>
+                <div class="gate gate-right">
+                    <img src="temple_gate.png" alt="Gate Right">
+                </div>
+            </div>
+            <div class="idol-container">
+                <img src="ganesha.png" alt="Lord Ganesha" class="ganesha-idol">
+                <div class="glow-effect"></div>
+                <div class="particles"></div>
+            </div>
+        </div>
+
+        <!-- Scene 2-7: Royal Palace -->
+        <div id="scene-palace" class="scene">
+            <div class="background-layer">
+                <img src="palace.png" alt="Palace" class="bg-img">
+                <div class="overlay-gradient"></div>
+            </div>
+
+            <!-- Couple Frame -->
+            <div class="frame-container" id="couple-frame">
+                <div class="golden-frame">
+                    <img src="/suresh.jpeg" alt="Bride & Groom">
+                    <div class="shine"></div>
+                </div>
+            </div>
+
+            <!-- Text Containers (Absolute Positioned, Start Hidden) -->
+            <div class="text-overlay" id="wedding-details">
+                <h2 class="groom">Suresh Agarwal</h2>
+                <span class="modifier">&</span>
+                <h2 class="bride">Gayatri Agarwal</h2>
+                <h4>S/o Late Sh. Ramgopal & Mishri Devi <br> invites you <br> on</h4>
+                <div class="divider-gold">☙ 25th (Silver Jubilee) Anniversary ❧</div>
+            </div>
+
+            <!-- Daughter's Section -->
+            <div class="frame-container" id="daughter-frame">
+                <div class="golden-frame">
+                    <img src="/unati.jpeg" alt="Unnati Agarwal">
+                    <div class="shine"></div>
+                </div>
+            </div>
+
+            <div class="text-overlay" id="daughter-details">
+                <h2 class="bride">Unnati Agarwal</h2>
+                <h4>D/o Suresh & Gayatri Agarwal <br> invites you <br> on</h4>
+                <div class="divider-gold">☙ Birthday Celebration ❧</div>
+            </div>
+
+            <!-- Timeline Section -->
+            <div class="text-overlay" id="timeline-section">
+                <div class="divider-gold">☙ The Royal Schedule ❧</div>
+                <h2 class="date-highlight">Thursday, 13th February, 2026</h2>
+
+                <div class="events-box">
+                    <div class="event-item">
+                        <h3>Sundarkand Path</h3>
+                        <p>1:00 PM</p>
+                    </div>
+                    <div class="event-separator"></div>
+                    <div class="event-item">
+                        <h3>Anniversary & Birthday Celebration<br>with Dinner</h3>
+                        <p>6:00 PM Onwards</p>
+                    </div>
+                </div>
+
+                <div class="venue-box">
+                    <p class="venue-label">Venue</p>
+                    <p class="venue-address">At Residence - <br> Backside of Navjeevan Hospital, Hardi Road Kanota
+                        Jaipur <br> Pincode - 303012</p>
+                    <p class="venue-phone">Phone: +91 9414049199</p>
+                </div>
+            </div>
+
+            <div class="text-overlay" id="message-overlay">
+                <p class="emotional-text">
+                    "With the blessings of our families,<br>
+                    we invite you to join us in celebrating<br>
+                    the union of our hearts."
+                </p>
+            </div>
+
+            <div class="text-overlay" id="personal-invite">
+                <p class="dear-text">Dear Guest,</p>
+                <p class="body-text">We are delighted to invite you and your family to grace the 25th (Silver Jublie)
+                    Anniversary.</p>
+            </div>
+
+            <div class="text-overlay" id="guest-card">
+                <div class="card-box">
+                    <h3>Inviting</h3>
+                    <h1 class="guest-name">You & Your Family </h1>
+                    <p class="note">Please grace us with your presence</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scene 8: Thank You -->
+        <div id="scene-end" class="scene">
+            <img src="end_bg.png" alt="Background" class="end-bg">
+            <div class="end-content">
+                <h1>Thank You</h1>
+                <p>Waiting to welcome you on our special day.</p>
+                <div class="names-end">Suresh Agarwal & whole Sobka family and then in (Shrimadhopur Wale)</div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Particles Canvas (Optional for subtle effects) -->
+    <canvas id="particle-canvas"></canvas>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

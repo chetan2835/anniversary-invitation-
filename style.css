@@ -1,0 +1,459 @@
+:root {
+    --gold: #FFD700;
+    --gold-dark: #C5A000;
+    --royal-red: #8B0000;
+    --deep-maroon: #500000;
+    --text-light: #FFF8E1;
+    --font-heading: 'Cinzel Decorative', cursive;
+    --font-script: 'Great Vibes', cursive;
+    --font-body: 'Playfair Display', serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    /* No scrolling, pure animation */
+    background: #000;
+    font-family: var(--font-body);
+}
+
+.cinematic-container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.scene {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    /* Hidden by default, controlled by JS */
+    pointer-events: none;
+}
+
+#scene-temple {
+    z-index: 10;
+    opacity: 1;
+    /* Starts visible */
+    pointer-events: auto;
+    background: #000;
+}
+
+/* --- Scene 1: Temple Gate --- */
+.gate-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    display: flex;
+}
+
+.gate {
+    width: 50%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    /* CSS shadow for depth */
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.8);
+}
+
+.gate img {
+    position: absolute;
+    height: 100%;
+    width: 200%;
+    /* Double width to simulate cropped half */
+    object-fit: cover;
+}
+
+.gate-left img {
+    left: 0;
+}
+
+.gate-right img {
+    left: -100%;
+}
+
+.idol-container {
+    z-index: 6;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    /* Let clicks pass through */
+}
+
+.ganesha-idol {
+    max-height: 70vh;
+    filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.6));
+    opacity: 0;
+    /* Start hidden */
+}
+
+/* --- Scene 2: Palace Background --- */
+#scene-palace {
+    z-index: 5;
+    background: black;
+}
+
+.background-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+    /* Slight dim */
+    transform: scale(1.0);
+    /* For zoom effect */
+}
+
+.overlay-gradient {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, transparent 40%, rgba(0, 0, 0, 0.8));
+}
+
+/* --- Couple Frame --- */
+.frame-container {
+    position: absolute;
+    z-index: 8;
+    opacity: 0;
+}
+
+.golden-frame {
+    padding: 15px;
+    background: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+    border-radius: 10px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    position: relative;
+    width: 300px;
+    /* Base size */
+    height: 400px;
+}
+
+.golden-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 2px solid #500000;
+}
+
+/* --- Typography & Overlays --- */
+.text-overlay {
+    position: absolute;
+    z-index: 10;
+    text-align: center;
+    width: 100%;
+    color: var(--text-light);
+    opacity: 0;
+    /* transform: translateY(20px); Start slightly down */
+}
+
+h2 {
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    color: var(--gold);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    margin: 10px 0;
+    line-height: 1.1;
+}
+
+.modifier {
+    font-family: var(--font-script);
+    font-size: 3rem;
+    color: #fff;
+}
+
+.divider-gold {
+    font-size: 2rem;
+    color: var(--gold-dark);
+    margin: 20px 0;
+}
+
+h4{
+    color: white;
+}
+
+p.date,
+p.time,
+p.venue {
+    font-size: 1.2rem;
+    color: #fff;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 5px 0;
+}
+
+.emotional-text {
+    font-family: var(--font-script);
+    font-size: 2.5rem;
+    line-height: 1.6;
+    color: var(--gold);
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+/* Guest Card */
+#guest-card .card-box {
+    background: rgba(80, 0, 0, 0.85);
+    /* Deep maroon glass */
+    padding: 40px;
+    border: 2px solid var(--gold);
+    border-radius: 15px;
+    display: inline-block;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+}
+
+.guest-name {
+    font-family: var(--font-heading);
+    color: var(--gold);
+    font-size: 3rem;
+    margin: 20px 0;
+}
+
+/* Personal Invite Section */
+.dear-text {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    color: var(--gold);
+    margin-bottom: 1rem;
+}
+
+.body-text {
+    font-family: var(--font-script);
+    font-size: 2.5rem;
+    color: #fff;
+    max-width: 80%;
+    margin: 0 auto;
+    line-height: 1.4;
+}
+
+/* End Scene */
+#scene-end {
+    z-index: 15;
+    background: #000;
+}
+
+.end-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.5;
+}
+
+.end-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.end-content h1 {
+    font-family: var(--font-heading);
+    font-size: 5rem;
+    color: var(--gold);
+}
+
+/* Audio Button */
+.audio-control {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+}
+
+#play-btn {
+    background: var(--gold);
+    color: #000;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-family: var(--font-body);
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7);
+    }
+
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 15px rgba(255, 215, 0, 0);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
+    }
+}
+
+@media (max-width: 768px) {
+    h2 {
+        font-size: 2.5rem;
+    }
+
+    .emotional-text {
+        font-size: 1.8rem;
+    }
+
+    .golden-frame {
+        width: 220px;
+        height: 300px;
+    }
+}
+
+/* Timeline Section */
+#timeline-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.date-highlight {
+    font-size: 2.5rem;
+    color: var(--text-light);
+    margin: 10px 0 30px;
+    font-family: var(--font-body);
+}
+
+.events-box {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 40px;
+    background: rgba(80, 0, 0, 0.6);
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid var(--gold-dark);
+}
+
+.event-item {
+    text-align: center;
+}
+
+.event-item h3 {
+    font-family: var(--font-heading);
+    color: var(--gold);
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.event-item p {
+    font-family: var(--font-body);
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: bold;
+}
+
+.event-separator {
+    width: 2px;
+    background: var(--gold);
+    opacity: 0.5;
+}
+
+.venue-box {
+    text-align: center;
+}
+
+.venue-label {
+    font-family: var(--font-script);
+    font-size: 2.5rem;
+    color: var(--gold);
+    margin-bottom: 10px;
+}
+
+.venue-address {
+    font-size: 1.4rem;
+    line-height: 1.5;
+    margin-bottom: 5px;
+}
+
+.venue-phone {
+    font-size: 1.2rem;
+    color: var(--gold-dark);
+}
+
+@media (max-width: 768px) {
+
+    /* Timeline Mobile Adjustments */
+    #timeline-section {
+        justify-content: flex-start;
+        padding-top: 20%;
+        /* Push down a bit so it's not at the very top */
+        height: 100%;
+        overflow-y: auto;
+        /* Allow scrolling if very small screen */
+    }
+
+    .events-box {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+        margin-bottom: 20px;
+        width: 90%;
+        /* prevent overflow */
+    }
+
+    .event-separator {
+        width: 100%;
+        height: 1px;
+    }
+
+    .date-highlight {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+
+    .event-item h3 {
+        font-size: 1.3rem;
+    }
+
+    .event-item p {
+        font-size: 1.1rem;
+    }
+
+    .venue-label {
+        font-size: 1.8rem;
+    }
+
+    .venue-address {
+        font-size: 1rem;
+        width: 90%;
+        margin: 0 auto 5px;
+    }
+}
