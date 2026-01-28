@@ -143,12 +143,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // --- Scene 7: Guest Card ---
 
-        masterTL.fromTo('#guest-card',
-            { rotationX: 90, opacity: 0 },
-            { duration: 1.5, rotationX: 0, opacity: 1, ease: "back.out(1.7)" }
-        );
+        // masterTL.fromTo('#guest-card',
+        //     { rotationX: 90, opacity: 0 },
+        //     { duration: 1.5, rotationX: 0, opacity: 1, ease: "back.out(1.7)" }
+        // );
 
-        masterTL.to('#guest-card', { duration: 1, opacity: 0, delay: 5 });
+        // masterTL.to('#guest-card', { duration: 1, opacity: 0, delay: 5 });
 
         // --- Scene 8: Thank You ---
 
